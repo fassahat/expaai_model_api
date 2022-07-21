@@ -12,7 +12,7 @@ def predict():
     data = request.get_json()
     sentences = data['sentences']
     time.sleep(10) # we will call model somewhere here
-    result = [sentences[0], sentences[1]]
+    result = { "advantages": [sentences[0]], "problems": [sentences[1]], "solutions": [sentences[2]] }
     return Response(json.dumps(result),  mimetype='application/json')
 
 if __name__ == '__main__':
