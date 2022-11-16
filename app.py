@@ -16,7 +16,7 @@ def predict():
     # time.sleep(1) # we will call model somewhere here
     # result = { "advantages": [sentences[11]], "problems": [sentences[13]], "solutions": [sentences[15]] }
     # print(result)
-    classifier = pipeline("text-classification", "fassahat/distill-bert-finetuned-150k-patent-sentences", framework="tf")
+    classifier = pipeline("text-classification", "fassahat/anferico-bert-for-patents-finetuned-557k-patent-sentences", framework="tf")
     result = classifier(sentences)
     final_result = {'advantages':[], 'solutions':[], 'problems':[]}
     for i in range(len(sentences)):
