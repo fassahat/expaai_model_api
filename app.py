@@ -30,5 +30,18 @@ def predict():
     
     return Response(json.dumps(final_result),  mimetype='application/json')
 
+@app.route('/semantic_search', methods=['POST'])
+def semantic_search():
+    data = request.get_json()
+    patent_text = data['patent_text']
+    question = data['question']
+
+    question_answerer = pipeline("question-answering", model='deepset/roberta-base-squad2')
+
+    result_model = question_answerer(question=question, context=patent_text)
+    result = { 'answer' : result_model['answer'] }
+
+    return  Response(json.dumps(result),  mimetype='application/json')
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=105)
