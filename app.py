@@ -18,7 +18,7 @@ def predict():
     # print(result)
     classifier = pipeline("text-classification", "fassahat/anferico-bert-for-patents-finetuned-557k-patent-sentences", framework="tf")
     result = classifier(sentences)
-    print(result)
+    # print(result)
     final_result = {'advantages':[], 'solutions':[], 'problems':[]}
     for i in range(len(sentences)):
         if (result[i]['score'] >= 0.8 and len(sentences[i]) > 10):
@@ -45,7 +45,7 @@ def semantic_search():
     answer_bert_large = question_answerer_bert_large(question=question, context=patent_text)
     # answer_distilbert = question_answerer_distilbert(question=question, context=patent_text)
     # print('answer_roberta: ', answer_roberta)
-    print('answer_bert_large: ', answer_bert_large)
+    # print('answer_bert_large: ', answer_bert_large)
     # print('answer_distilbert: ', answer_distilbert)
 
     # result = {}
